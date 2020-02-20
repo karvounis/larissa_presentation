@@ -1,0 +1,36 @@
+- hosts: name_larissa-devs*
+  gather_facts: no
+  vars:
+    server_directory: /var/www/html/hellolarissa
+  tasks:
+  - name: Ensure nginx is at the latest version
+    apt:
+      name: nginx
+      state: latest
+      update_cache: yes
+      cache_valid_time: 3600
+    become: yes
+  - name: Create nginx directory
+    file:
+      path: "{{ server_directory }}"
+      state: directory
+    become: yes
+  - name: Copy files
+    copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+    with_items:
+      - {src: "{{ playbook_dir }}/nginx/hellolarissa.conf", dest: /etc/nginx/sites-available/hellolarissa.conf}
+      - {src: "{{ playbook_dir }}/nginx/index.html", dest: "{{ server_directory }}/index.html"}
+    become: yes
+  - name: Create symlink
+    file:
+      src: /etc/nginx/sites-available/hellolarissa.conf
+      dest: /etc/nginx/sites-enabled/default
+      state: link
+    become: yes
+  - name: Restart nginx
+    service:
+      name: nginx
+      state: restarted
+    become: yes
