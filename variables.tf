@@ -3,11 +3,6 @@ variable "nginx_instances_count" {
   type        = number
 }
 
-variable "ami_id" {
-  description = "The AMI ID that the instances are going to use"
-  type        = string
-}
-
 variable "key_name" {
   description = "Name of the SSH key that you attach to the instances"
   type        = string

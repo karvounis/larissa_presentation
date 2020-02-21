@@ -1,4 +1,4 @@
-variable "nginx_instances_count" {
+variable "aws_instances_count" {
   description = "Number of aws_instances that we want to have"
   type        = number
   default     = 0
@@ -15,20 +15,8 @@ variable "key_name" {
   default     = ""
 }
 
-variable "instances_security_group_names" {
-  description = "A list of the names of security groups to attach to instances"
-  type        = list(string)
-  default     = []
-}
-
-variable "lb_security_group_ids" {
-  description = "A list of the ids of security groups to attach to the load balancer"
-  type        = list(string)
-  default     = []
-}
-
-variable "lb_subnet_ids" {
-  description = "A list of the ids of the subnets to attach to the load balancer"
+variable "instances_vpc_security_group_ids" {
+  description = "A list of ids of security groups to attach to instances"
   type        = list(string)
   default     = []
 }
@@ -37,6 +25,18 @@ variable "instance_tags" {
   description = "A map of tags you want to add to the instances"
   type        = map(string)
   default     = {}
+}
+
+variable "lb_security_group_ids" {
+  description = "A list of the ids of security groups to attach to the load balancer"
+  type        = list(string)
+  default     = []
+}
+
+variable "vpc_subnet_ids" {
+  description = "A list of subnet ids"
+  type        = list(string)
+  default     = []
 }
 
 variable "create_lb" {

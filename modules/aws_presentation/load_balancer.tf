@@ -4,7 +4,7 @@ resource "aws_lb" "this" {
 
   internal = false
 
-  subnets = var.lb_subnet_ids
+  subnets = var.vpc_subnet_ids
 
   security_groups = var.lb_security_group_ids
 }

@@ -16,3 +16,4 @@ fabric.properties
 .credentials
 *.tfvars
 *.plan
+tf_inventory
