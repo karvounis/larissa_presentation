@@ -1,11 +1,17 @@
-variable "costs_threshold" {}
+variable "costs_threshold" {
+  description = "The threshold of cost for the budget"
+  type        = string
+}
 
-variable "user_karvounis" {
-  type = map(string)
+variable "user" {
+  description = "user specfic information"
+  type        = map(string)
 }
 
 variable "sms_sender_id" {
-  default = "AWSpersonal"
+  description = "SMS Sender ID"
+  type        = string
+  default     = "AWSpersonal"
 }
 
 resource "aws_budgets_budget" "global_monthly_allowance_forecasted_costs" {
@@ -51,7 +57,7 @@ resource "aws_cloudwatch_metric_alarm" "account_billing_alarm" {
 resource "aws_sns_topic_subscription" "topic_name_sms_karvounis" {
   topic_arn              = aws_sns_topic.topic_budget_alerting.arn
   protocol               = "sms"
-  endpoint               = var.user_karvounis["phone"]
+  endpoint               = var.user["phone"]
   endpoint_auto_confirms = true
   provider               = aws.us-east-1
 

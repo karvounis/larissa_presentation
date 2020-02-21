@@ -6,6 +6,6 @@ output "my_web_server_info" {
   }
 }
 
-output "this_load_balancer_info" {
-  value = aws_alb_target_group_attachment.larissa_dev_target_group_attachment.target_id
+output "this_load_balancer_target_id" {
+  value = aws_alb_target_group_attachment.larissa_dev_target_group_attachment.*.target_id
 }
