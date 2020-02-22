@@ -18,5 +18,8 @@
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| my\_web\_server\_info | n/a |
+| this\_load\_balancer\_dns\_name | n/a |
 

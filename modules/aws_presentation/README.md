@@ -24,5 +24,6 @@
 | Name | Description |
 |------|-------------|
 | my\_web\_server\_info | n/a |
+| this\_load\_balancer\_dns\_name | n/a |
 | this\_load\_balancer\_target\_id | n/a |
 
