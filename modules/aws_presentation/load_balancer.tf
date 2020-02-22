@@ -1,4 +1,6 @@
 resource "aws_lb" "this" {
+  // Defines a load balance resource.
+  // It will be created only if var.create_lb is true.
   count = var.create_lb ? 1 : 0
   name  = "larissadevslb"
 

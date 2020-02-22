@@ -17,3 +17,5 @@ fabric.properties
 *.tfvars
 *.plan
 tf_inventory
+graph.svg
+.DS_Store
