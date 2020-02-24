@@ -1,8 +1,9 @@
 output "my_web_server_info" {
   value = {
-    "hostname": aws_instance.my_web_server.*.id
-    "public_ip": aws_instance.my_web_server.*.public_ip
-    "private_ip": aws_instance.my_web_server.*.private_ip
+    "ids": aws_instance.my_web_server.*.id
+    "tags": aws_instance.my_web_server.*.tags
+    "public_ips": aws_instance.my_web_server.*.public_ip
+    "private_ips": aws_instance.my_web_server.*.private_ip
   }
 }
 

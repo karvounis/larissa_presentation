@@ -1,4 +1,4 @@
-- hosts: name_larissa-devs*
+- hosts: name_larissa_devs*
   gather_facts: no
   vars:
     server_directory: /var/www/html/hellolarissa
@@ -10,11 +10,15 @@
       update_cache: yes
       cache_valid_time: 3600
     become: yes
+    tags:
+      - presentation.install
   - name: Create nginx directory
     file:
       path: "{{ server_directory }}"
       state: directory
     become: yes
+    tags:
+      - presentation.install
   - name: Copy files
     copy:
       src: "{{ item.src }}"
@@ -23,14 +27,23 @@
       - {src: "{{ playbook_dir }}/nginx/hellolarissa.conf", dest: /etc/nginx/sites-available/hellolarissa.conf}
       - {src: "{{ playbook_dir }}/nginx/index.html", dest: "{{ server_directory }}/index.html"}
     become: yes
+    tags:
+      - presentation.install
+      - presentation.config
   - name: Create symlink
     file:
       src: /etc/nginx/sites-available/hellolarissa.conf
       dest: /etc/nginx/sites-enabled/default
       state: link
     become: yes
+    tags:
+      - presentation.install
+      - presentation.config
   - name: Restart nginx
     service:
       name: nginx
       state: restarted
     become: yes
+    tags:
+      - presentation.install
+      - presentation.config

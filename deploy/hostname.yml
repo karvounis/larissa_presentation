@@ -1,4 +1,4 @@
-- hosts: name_larissa-devs*
+- hosts: name_larissa_devs*
   gather_facts: no
   tasks:
   - name: Get instance id

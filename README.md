@@ -9,11 +9,12 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
+| aws\_instances\_count | Number of aws\_instances that we want to have | `number` | n/a | yes |
 | costs\_threshold | The threshold of cost for the budget | `string` | n/a | yes |
 | instance\_tags | A map of tags you want to add to the instances | `map(string)` | n/a | yes |
 | key\_name | Name of the SSH key that you attach to the instances | `string` | n/a | yes |
-| nginx\_instances\_count | Number of aws\_instances that we want to have | `number` | n/a | yes |
 | user | user specfic information | `map(string)` | n/a | yes |
+| create\_lb | Set to true to create the necessary infrastructure for our Load Balancer | `bool` | `false` | no |
 | sms\_sender\_id | SMS Sender ID | `string` | `"AWSpersonal"` | no |
 
 ## Outputs
