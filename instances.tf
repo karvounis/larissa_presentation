@@ -5,7 +5,7 @@ module "aws_presentation" {
   // Defines how many instances will be created
   aws_instances_count = var.aws_instances_count
 
-  # -------------------- Variables relevant for the instances ------------------
+  # -------------------- Instances specific Variables  -------------------------
   ami_id                           = data.aws_ami.ubuntu-18_04.id
   instances_vpc_security_group_ids = [
     aws_security_group.allow_ssh.id,
@@ -15,8 +15,7 @@ module "aws_presentation" {
   instance_tags                    = var.instance_tags
   key_name                         = var.key_name
 
-  # ---------------- Variables relevant for the load balancer ------------------
-  // Set to true to create the necessary infrastructure for our Load Balancer
+  # ---------------- Load balancer specific Variables --------------------------
   create_lb             = var.create_lb
   lb_security_group_ids = [
     aws_security_group.allow_80.id
