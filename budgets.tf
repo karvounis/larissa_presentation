@@ -27,7 +27,7 @@ resource "aws_budgets_budget" "global_monthly_allowance_forecasted_costs" {
 }
 
 resource "aws_sns_topic" "topic_budget_alerting" {
-  name = "topic-budget-alerting"
+  name     = "topic-budget-alerting"
   provider = aws.us-east-1
 }
 

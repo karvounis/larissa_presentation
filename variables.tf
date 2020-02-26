@@ -15,6 +15,6 @@ variable "instance_tags" {
 
 variable "create_lb" {
   description = "Set to true to create the necessary infrastructure for our Load Balancer"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
